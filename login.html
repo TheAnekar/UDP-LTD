@@ -16,6 +16,7 @@
     <div id="login-form" class="form-box">
       <h2>Login</h2>
       <form action="backend\auth.php" method="POST">
+        <input type="hidden" name="action" value="login">
         <input type="email" placeholder="Email" name="email" required />
         <input type="password" placeholder="Password" name="password" required />
         <button type="submit" name="login">Login</button>
@@ -25,14 +26,15 @@
     <div id="register-form" class="form-box hidden">
       <h2>Register</h2>
       <!-- Register Form -->
-<form action="backend\auth.php" method="POST">
-    <input type="text" name="name" placeholder="Full Name" required />
-    <input type="text" name="username" placeholder="Username" required />
-    <input type="email" name="email" placeholder="Email" required />
-    <input type="password" name="password" placeholder="Password" required />
-    <input type="password" name="confirm_password" placeholder="Confirm Password" required />
-    <button type="submit" name="register">Register</button>
-  </form>  
+        <form action="backend\auth.php" method="POST">
+            <input type="hidden" name="action" value="register">
+            <input type="text" name="name" placeholder="Full Name" required />
+            <input type="text" name="username" placeholder="Username" required />
+            <input type="email" name="email" placeholder="Email" required />
+            <input type="password" name="password" placeholder="Password" required />
+            <input type="password" name="confirm_password" placeholder="Confirm Password" required />
+            <button type="submit" name="register">Register</button>
+        </form>  
     </div>
   </div>
 

@@ -1,73 +1,97 @@
 <?php
+session_start();
+
+// Database connection
 $host = "localhost";
-$db = "ecommerce"; // Replace with your database name
-$user = "root";
-$pass = "";
+$db = "ecommerce";
+$user = "root"; // default for XAMPP
+$pass = "";     // default password is blank
 
 $conn = new mysqli($host, $user, $pass, $db);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+// Message to be displayed
+$message = "";
 
-    // Registration logic
-    if (isset($_POST['register'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Sanitize input
+    $action = $_POST['action'] ?? ''; // Use null coalescing operator to prevent undefined index warnings
+
+    if ($action === 'register') {
+        // Registration logic
         $name = $_POST['name'];
-        $username = $_POST['username'];
+        $username = $_POST['username']; // Keep username in registration
         $email = $_POST['email'];
         $password = $_POST['password'];
         $confirm_password = $_POST['confirm_password'];
 
-        // Passwords must match
+        // Validate fields
         if ($password !== $confirm_password) {
-            echo "Passwords do not match.";
-            exit;
-        }
-
-        // Check if email or username already exists
-        $check = $conn->prepare("SELECT id FROM users WHERE email = ? OR username = ?");
-        $check->bind_param("ss", $email, $username);
-        $check->execute();
-        $check->store_result();
-
-        if ($check->num_rows > 0) {
-            echo "Email or Username already exists.";
+            $message = "Passwords do not match!";
         } else {
-            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-            $stmt = $conn->prepare("INSERT INTO users (name, username, email, password) VALUES (?, ?, ?, ?)");
-            $stmt->bind_param("ssss", $name, $username, $email, $hashedPassword);
-            if ($stmt->execute()) {
-                echo "Registration successful.";
+            // Check if username or email already exists
+            $check = $conn->prepare("SELECT id FROM users WHERE username=? OR email=?");
+            $check->bind_param("ss", $username, $email);
+            $check->execute();
+            $check->store_result();
+
+            if ($check->num_rows > 0) {
+                $message = "Username or email is already in use!";
             } else {
-                echo "Registration failed.";
+                $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+                $stmt = $conn->prepare("INSERT INTO users (name, username, email, password) VALUES (?, ?, ?, ?)");
+                $stmt->bind_param("ssss", $name, $username, $email, $hashed_password);
+
+                if ($stmt->execute()) {
+                    // Redirect to login page with success message
+                    header("Location: index.html?success=1");
+                    exit;
+                } else {
+                    $message = "Registration failed. Please try again.";
+                }
             }
-            $stmt->close();
         }
+    } elseif ($action === 'login') {
+        // Login logic
+        if (isset($_POST['email']) && isset($_POST['password'])) {
+            $email = $_POST['email'];
+            $password = $_POST['password'];
 
-        $check->close();
+            // Login based on email
+            $stmt = $conn->prepare("SELECT id, password FROM users WHERE email=?");
+            $stmt->bind_param("s", $email);
+            $stmt->execute();
+            $stmt->store_result();
 
-    }
+            if ($stmt->num_rows === 1) {
+                $stmt->bind_result($user_id, $hashed_password);
+                $stmt->fetch();
 
-    // Login logic
-    elseif (isset($_POST['login'])) {
-        $email = $_POST['email'];
-        $password = $_POST['password'];
-
-        $stmt = $conn->prepare("SELECT password FROM users WHERE email = ?");
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $stmt->bind_result($hashedPassword);
-
-        if ($stmt->fetch() && password_verify($password, $hashedPassword)) {
-            echo "Login successful.";
+                if (password_verify($password, $hashed_password)) {
+                    $_SESSION['user_id'] = $user_id;
+                    // Redirect to the main page (main.html)
+                    header("Location: ../Main.html");
+                    exit;
+                } else {
+                    $message = "Incorrect password.";
+                }
+            } else {
+                $message = "User not found.";
+            }
         } else {
-            echo "Invalid email or password.";
+            $message = "Please fill in both email and password.";
         }
-
-        $stmt->close();
     }
 }
-
-$conn->close();
 ?>
+
+<!-- Show error/success message in the same page -->
+<?php if (!empty($message)) : ?>
+    <div style="color: red; font-weight: bold;"><?= htmlspecialchars($message) ?></div>
+<?php endif; ?>
+
+<?php if (isset($_GET['success'])) : ?>
+    <div style="color: green; font-weight: bold;">Registration successful! You can now log in.</div>
+<?php endif; ?>
