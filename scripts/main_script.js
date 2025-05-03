@@ -1,20 +1,24 @@
-// Carousel Logic
-let track = document.getElementById('carouselTrack');
-let position = 0;
+/// Circular Carousel Logic
+const track = document.getElementById('carouselTrack');
+const items = track.children;
+const itemWidth = 320; // including margin
+let currentIndex = 0;
+
+function updateCarouselPosition() {
+  const offset = -currentIndex * itemWidth;
+  track.style.transform = `translateX(${offset}px)`;
+}
 
 function nextSlide() {
-  if (position > -((track.children.length - 1) * 320)) {
-    position -= 320;
-    track.style.transform = `translateX(${position}px)`;
-  }
+  currentIndex = (currentIndex + 1) % items.length;
+  updateCarouselPosition();
 }
 
 function prevSlide() {
-  if (position < 0) {
-    position += 320;
-    track.style.transform = `translateX(${position}px)`;
-  }
+  currentIndex = (currentIndex - 1 + items.length) % items.length;
+  updateCarouselPosition();
 }
+
 
 // Countdown Timer
 const countdown = document.getElementById('countdown');

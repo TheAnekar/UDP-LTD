@@ -1,124 +1,17 @@
 body {
+    font-family: 'Arial', sans-serif;
     margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
+    padding: 0;
+    background-color: #e3e6e6;
+    color: #111;
   }
   
-  header {
-    background: linear-gradient(to right, #1d3557, #457b9d);
-    color: white;
-    padding: 40px 20px;
-    text-align: center;
-  }
-  
-  header h1 {
-    font-size: 3em;
-    margin-bottom: 10px;
-  }
-  
-  header p {
-    font-size: 1.2em;
-    margin-bottom: 20px;
-  }
-  
-  header button {
-    background-color: #e63946;
-    color: white;
-    padding: 12px 24px;
-    font-size: 1em;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .categories {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 20px;
-    padding: 40px 20px;
-    background-color: #fff;
-  }
-  
-  .category-card {
-    background-color: #f1faee;
-    border-radius: 10px;
-    text-align: center;
-    padding: 20px;
-    transition: transform 0.3s, box-shadow 0.3s;
-    cursor: pointer;
-  }
-  
-  .category-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-  }
-  
-  .carousel {
-    overflow: hidden;
-    position: relative;
-    padding: 20px;
-    background-color: #fff;
-  }
-  
-  .carousel-track {
-    display: flex;
-    transition: transform 0.5s ease;
-  }
-  
-  .carousel-item {
-    min-width: 300px;
-    margin-right: 20px;
-    background-color: #e0e0e0;
-    padding: 20px;
-    border-radius: 10px;
-    flex-shrink: 0;
-  }
-  
-  .carousel-controls {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 20px;
-  }
-  
-  .carousel-controls button {
-    background-color: #1d3557;
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-  }
-  
-  .promo-banner {
-    background: #e63946;
-    color: white;
-    text-align: center;
-    padding: 30px 20px;
-  }
-  
-  .countdown {
-    font-size: 1.5em;
-    font-weight: bold;
-    margin-top: 10px;
-  }
-  
-  footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #1d3557;
-    color: white;
-  }
-  
-  @media (max-width: 600px) {
-    .carousel-item {
-      min-width: 80%;
-    }
-  }
+  /* Navbar */
   .navbar {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: #1d3557;
+    background-color: #131921;
     padding: 14px 20px;
     position: sticky;
     top: 0;
@@ -134,23 +27,92 @@ body {
     font-weight: 500;
   }
   
-  .navbar a:hover {
-    background-color: #457b9d;
-    border-radius: 5px;
-  }
-  
+  .navbar a:hover,
   .navbar a.active {
-    background-color: #e63946;
+    background-color: #f08804;
     border-radius: 5px;
+    color: #111;
   }
   
-  .menu-toggle {
-    display: none;
-    font-size: 24px;
+  /* Headings */
+  h2 {
+    text-align: center;
+    margin: 30px 0;
+    color: #0f1111;
+  }
+  
+  /* Category Grid */
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    padding: 30px;
+  }
+  
+  .category-item {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    text-align: center;
+    padding: 25px;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
-    color: white;
+    font-weight: bold;
   }
   
+  .category-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Product Grid */
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+    padding: 30px;
+  }
+  
+  .product-card {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    transition: box-shadow 0.3s, transform 0.3s;
+  }
+  
+  .product-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+  
+  .product-card:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transform: scale(1.02);
+  }
+  
+  /* Back Button */
+  .back-btn {
+    display: block;
+    margin: 30px auto;
+    padding: 12px 25px;
+    font-size: 16px;
+    background-color: #f08804;
+    color: #111;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .back-btn:hover {
+    background-color: #e67e00;
+  }
+  
+  /* Responsive Tweaks */
   @media (max-width: 768px) {
     .navbar {
       flex-direction: column;
@@ -158,18 +120,13 @@ body {
     }
   
     .navbar a {
-      display: none;
+      display: block;
       width: 100%;
       padding: 10px 0;
     }
   
-    .navbar.show a {
-      display: block;
-    }
-  
-    .menu-toggle {
-      display: block;
-      align-self: flex-end;
+    .category-grid, .products-grid {
+      padding: 20px;
     }
   }
-    
+  
