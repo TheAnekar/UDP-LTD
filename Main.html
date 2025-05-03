@@ -1,111 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/main_style.css">
-    <title>UDP LTD.com</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modern E-Commerce Homepage</title>
+  <link rel="stylesheet" href="styles/shop_style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
-<body>    
-    <nav class="navbar">
-        <a class="active" href="#home">Home</a>
-        <a href="Shop.html">Shop</a>
-        <a href="#cart">Cart</a>
-        <a href="#account">Account</a>
-        <a href="#contact">Contact</a>
-    </nav>
-    <h1>Welcome to UDP LTD.com</h1>
-    <p>Welcome to Your dream shopping spot where you can order everything that you need all in one place<br>
-    We sell all variety of products all in one place for you to order</p>
+<body>
 
-    <section class="products-section">
-        <h2>Our Products</h2>
-        <div class="products-grid">
-            
-            <div class="product-card">
-                <img src="img/product1.jpeg" alt="Product 1">
-                <div class="product-title">Wireless Headphones</div>
-                <div class="product-price">$49.99</div>
-                <button>Add to Cart</button>
-            </div>
-            
-            <div class="product-card">
-                <img src="img/product2.jpeg" alt="Product 2">
-                <div class="product-title">Smart Watch</div>
-                <div class="product-price">$89.99</div>
-                <button>Add to Cart</button>
-            </div>
-            
-            <div class="product-card">
-                <img src="img/product3.jpeg" alt="Product 3">
-                <div class="product-title">Bluetooth Speaker</div>
-                <div class="product-price">$29.99</div>
-                <button>Add to Cart</button>
-            </div>
-            <div class="product-card">
-                <img src="img/product4.jpeg" alt="Product 4">
-                <div class="product-title">Laptop Stand</div>
-                <div class="product-price">$19.99</div>
-                <button>Add to Cart</button>
+        <nav class="navbar">
+          <a class="active" href="Main.html">Home</a>
+          <a href="Shop.html">Shop</a>
+          <a href="#cart">Cart</a>
+          <a href="#account">Account</a>
+          <a href="#contact">Contact</a>
+          <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+        </nav>
+        
+<header>
+  <h1>Welcome to ShopBright</h1>
+  <p>Your destination for curated trends and deals</p>
+  <button onclick="alert('Explore the collection!')">Shop Now</button>
+</header>
 
-        </div>
-            <div class="product-card">
-                <img src="img/product5.jpeg" alt="Product 5">
-                <div class="product-title">USB-C Hub</div>
-                <div class="product-price">$39.99</div>
-                <button>Add to Cart</button>
-            </div>
-            <div class="product-card">
-                <img src="img/product6.jpeg" alt="Product 6">
-                <div class="product-title">Portable Charger</div>
-                <div class="product-price">$24.99</div>
-                <button>Add to Cart</button>
-            </div>
-            <div class="product-card">
-                <img src="img/product7.jpeg" alt="Product 7">
-                <div class="product-title">Wireless Mouse</div>
-                <div class="product-price">$14.99</div>
-                <button>Add to Cart</button>
-            </div>
-            <div class="product-card">
-                <img src="img/product8.jpeg" alt="Product 8">
-                <div class="product-title">Gaming Keyboard</div>
-                <div class="product-price">$59.99</div>
-                <button>Add to Cart</button>
-            </div>
-            <div class="product-card">
-                <img src="img/product9.jpeg" alt="Product 9">
-                <div class="product-title">HDMI Cable</div>
-                <div class="product-price">$9.99</div>
-                <button>Add to Cart</button>
-            </div>  
-            <div class="product-card">
-                <img src="img/product10.jpeg" alt="Product 10">
-                <div class="product-title">Webcam</div>
-                <div class="product-price">$49.99</div>
-                <button>Add to Cart</button>
-            </div>
-    </section>
-    <section>
-        <h2>Our Services</h2>
-        <p>We offer a variety of services to meet your needs.</p>
-        <ul>
-            <li>Service 1</li>
-            <li>Service 2</li>
-            <li>Service 3</li>
-        </ul>
-    </section>
-    <section>
-        <h2>Contact Us</h2>
-        <p>If you have any questions, feel free to reach out!</p>
-        <form action="submit_form.php" method="post">
-            <label for="name">Name:</label><br>
-            <input type="text" id="name" name="name"><br>
-            <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email"><br>
-            <input type="submit" value="Submit">
-        </form>
-    </section>
-    <footer>
-        <p>&copy; 2025 UDP LTD. All rights reserved.</p>
+<section class="categories">
+  <div class="category-card">👕 Clothing</div>
+  <div class="category-card">🎧 Electronics</div>
+  <div class="category-card">🏠 Home & Living</div>
+  <div class="category-card">🧴 Beauty</div>
+  <div class="category-card">👟 Footwear</div>
+</section>
+
+<section class="carousel">
+  <div class="carousel-controls">
+    <button onclick="prevSlide()">←</button>
+    <button onclick="nextSlide()">→</button>
+  </div>
+  <div class="carousel-track" id="carouselTrack">
+    <div class="carousel-item">Product 1</div>
+    <div class="carousel-item">Product 2</div>
+    <div class="carousel-item">Product 3</div>
+    <div class="carousel-item">Product 4</div>
+  </div>
+</section>
+
+<section class="promo-banner">
+  <h2>🔥 Limited-Time Offer: 50% Off Electronics!</h2>
+  <div class="countdown" id="countdown">Loading...</div>
+</section>
+
+<footer>
+  &copy; 2025 ShopBright. All rights reserved.
+</footer>
+
+<script src="scripts/main_script.js"></script>
 </body>
+</html>
