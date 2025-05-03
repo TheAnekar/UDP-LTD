@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 if ($stmt->execute()) {
                     // Redirect to login page with success message
-                    header("Location: index.html?success=1");
+                    header("Location: ../login.html?success=1");
                     exit;
                 } else {
                     $message = "Registration failed. Please try again.";
