@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop | My E-Commerce</title>
+    <link rel="stylesheet" href="styles/shop_style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <a href="Main.html">Home</a>
+        <a class="active" href="Shop.html">Shop</a>
+        <a href="#cart">Cart</a>
+        <a href="#account">Account</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <section class="categories" id="categories-section">
+        <h2>Shop by Category</h2>
+        <div class="category-grid" id="category-grid">
+           
+        </div>
+    </section>
+
+    <section class="products" id="products-section" style="display:none;">
+        <h2 id="products-title"></h2>
+        <div class="products-grid" id="products-grid">
+           
+        </div>
+        <button onclick="backToCategories()" class="back-btn">Back to Categories</button>
+    </section>
+
+    <script src="scripts/shop_script.js"></script>
+</body>
+</html>
