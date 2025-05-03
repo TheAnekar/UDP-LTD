@@ -1,0 +1,252 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.navbar {
+    background-color: #000; /* Black */
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    transition: background-color 0.3s ease;
+}
+
+.navbar a {
+    color: #fff; /* White */
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.navbar a.active {
+    background-color: #ff8c00; /* Orange */
+    color: #fff;
+}
+
+.navbar a:hover {
+    background-color: #333; /* Darker Black */
+}
+
+.navbar .menu-toggle {
+    display: none;
+    color: #fff; /* White */
+    padding: 14px 16px;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+header {
+    background-color: #222; /* Slightly darker gray for header */
+    color: #fff;
+    padding: 2em 0;
+    text-align: center;
+    margin-top: 60px;
+}
+
+header h1 {
+    margin-bottom: 0.5em;
+}
+
+.contact-container {
+    display: flex;
+    max-width: 960px;
+    margin: 2em auto;
+    padding: 2em;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.contact-form {
+    flex: 2;
+    padding-right: 2em;
+    border-right: 1px solid #ddd;
+}
+
+.contact-form h2 {
+    margin-top: 0;
+    color: #ff8c00; /* Orange */
+    margin-bottom: 1em;
+}
+
+.form-group {
+    margin-bottom: 1.5em;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    color: #555; /* Darker gray for labels */
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group textarea {
+    width: calc(100% - 12px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.error-message {
+    display: block;
+    color: #e74c3c;
+    font-size: 0.9em;
+    margin-top: 0.2em;
+}
+
+.submit-button {
+    background-color: #ff8c00; /* Orange */
+    color: #fff;
+    padding: 1em 2em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #e67e22; /* Darker Orange */
+}
+
+.response-message {
+    margin-top: 1em;
+    padding: 1em;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.response-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.response-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.contact-details {
+    flex: 1;
+    padding-left: 2em;
+}
+
+.contact-details h2 {
+    color: #ff8c00; /* Orange */
+    margin-bottom: 1em;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.detail-item i {
+    margin-right: 0.8em;
+    color: #ff8c00; /* Orange */
+    font-size: 1.2em;
+}
+
+.social-links {
+    margin-top: 2em;
+}
+
+.social-links h3 {
+    color: #555; /* Dark gray */
+    margin-bottom: 0.8em;
+}
+
+.social-links a {
+    display: inline-block;
+    margin-right: 1em;
+    color: #333; /* Dark gray */
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #ff8c00; /* Orange */
+}
+
+footer {
+    text-align: center;
+    padding: 1em 0;
+    background-color: #000; /* Black */
+    color: #fff;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+        padding: 1.5em;
+    }
+
+    .contact-form {
+        padding-right: 0;
+        border-right: none;
+        margin-bottom: 2em;
+    }
+
+    .contact-details {
+        padding-left: 0;
+    }
+
+    .navbar a {
+        display: none;
+        width: 100%;
+        text-align: center;
+    }
+
+    .navbar a.active {
+        background-color: #ff8c00; /* Orange */
+        color: #fff;
+    }
+
+    .navbar a:hover {
+        background-color: #333; /* Darker black */
+    }
+
+
+    .navbar.responsive a {
+        display: block;
+    }
+
+    .navbar .menu-toggle {
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    .navbar.responsive {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar.responsive a {
+        text-align: left;
+    }
+}
