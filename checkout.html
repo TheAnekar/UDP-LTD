@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Checkout</h1>
+
+    <form action="checkout.php" method="POST">
+        <h2>Order Summary</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Quantity</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (!empty($products)) : ?>
+                    <?php foreach ($_SESSION['cart'] as $product_id => $quantity) : ?>
+                        <tr>
+                            <td><?= $products[$product_id]['name'] ?></td>
+                            <td><?= $quantity ?></td>
+                            <td>$<?= number_format($products[$product_id]['price'], 2) ?></td>
+                            <td>$<?= number_format($products[$product_id]['price'] * $quantity, 2) ?></td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </tbody>
+        </table>
+
+        <h3>Total: $<?= number_format($total_price, 2) ?></h3>
+
+        <div>
+            <label for="address">Shipping Address:</label><br>
+            <textarea name="address" required></textarea><br><br>
+        </div>
+
+        <button type="submit">Place Order</button>
+    </form>
+
+    <br>
+    <a href="order.php">Back to Cart</a>
+</body>
+</html>
