@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login/Register Toggle</title>
+  <link rel="stylesheet" href="styles\login_style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="toggle-buttons">
+      <button id="show-login">Login</button>
+      <button id="show-register">Register</button>
+    </div>
+
+    <div id="login-form" class="form-box">
+      <h2>Login</h2>
+      <form action="/login" method="POST">
+        <input type="email" placeholder="Email" name="email" required />
+        <input type="password" placeholder="Password" name="password" required />
+        <button type="submit">Login</button>
+      </form>
+    </div>
+
+    <div id="register-form" class="form-box hidden">
+      <h2>Register</h2>
+      <form action="/register" method="POST">
+        <input type="text" placeholder="Name" name="name" required />
+        <input type="email" placeholder="Email" name="email" required />
+        <input type="password" placeholder="Password" name="password" required />
+        <button type="submit">Register</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="scripts\login_script.js"></script>
+</body>
+</html>
